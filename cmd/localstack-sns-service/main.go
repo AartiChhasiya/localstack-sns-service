@@ -44,38 +44,41 @@ func main() {
 	// Publish a new message every 5 seconds continuously
 	publishMessageContinuouslyOnInterval(snsClient, *topic.TopicArn, 5)
 
-	// err = godotenv.Load(".env-local")
-	// if err != nil {
-	// 	log.Fatal("Error loading .env-local file")
-	// }
-	// envValue := os.Getenv("PUBLISH_MSG_CONTINUOUSLY")
+	///Using .env-local file configuration
+	/*
+		err = godotenv.Load(".env-local")
+		if err != nil {
+			log.Fatal("Error loading .env-local file")
+		}
+		envValue := os.Getenv("PUBLISH_MSG_CONTINUOUSLY")
 
-	// if envValue == "" {
-	// 	fmt.Println("Environment variable is empty")
-	// 	return
-	// }
+		if envValue == "" {
+			fmt.Println("Environment variable is empty")
+			return
+		}
 
-	// // Convert the environment variable value to a boolean
-	// postMsgContinuously, err := strconv.ParseBool(envValue)
-	// if err != nil {
-	// 	fmt.Println("Failed to parse environment variable:", err)
-	// 	return
-	// }
+		// Convert the environment variable value to a boolean
+		postMsgContinuously, err := strconv.ParseBool(envValue)
+		if err != nil {
+			fmt.Println("Failed to parse environment variable:", err)
+			return
+		}
 
-	// if postMsgContinuously {
-	// 	// Publish a message to the SNS topic
-	// 	publishMessage(snsClient, *topic.TopicArn)
-	// } else {
+		if postMsgContinuously {
+			// Publish a message to the SNS topic
+			publishMessage(snsClient, *topic.TopicArn)
+		} else {
 
-	// 	interval, err := time.ParseDuration(os.Getenv("PUBLISH_MSG_INTERVAL"))
-	// 	if err != nil {
-	// 		fmt.Println("Failed to parse environment variable:", err)
-	// 		return
-	// 	}
+			interval, err := time.ParseDuration(os.Getenv("PUBLISH_MSG_INTERVAL"))
+			if err != nil {
+				fmt.Println("Failed to parse environment variable:", err)
+				return
+			}
 
-	// 	// Publish a new message every 5 seconds continuously
-	// 	publishMessageContinuouslyOnInterval(snsClient, *topic.TopicArn, interval)
-	// }
+			// Publish a new message every 5 seconds continuously
+			publishMessageContinuouslyOnInterval(snsClient, *topic.TopicArn, interval)
+		}
+	*/
 }
 
 func publishMessage(snsClient *sns.SNS, topicARN string) {
